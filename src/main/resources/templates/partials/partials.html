@@ -1,0 +1,14 @@
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <title th:text="${'My Site | ' + title}"></title>
+</head>
+
+<nav th:fragment="nav">
+    <a href="/home">Home</a>
+    <a href="/posts">Posts</a>
+    <a href="/logout">Logout</a>
+</nav>
+
+<footer th:fragment="footer">
+    <p>This is the footer</p>
+</footer>
