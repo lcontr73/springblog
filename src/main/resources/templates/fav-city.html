@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Favorite City Form</title>
+</head>
+<body>
+<form th:action="@{/fav-city}" th:method="POST">
+
+  <label for="query">Search for your Favorite City</label>
+  <input type="text" name="query" id="query" placeholder="Search for favorite city">
+  <button>Search</button>
+</form>
+</body>
+</html>
