@@ -1,5 +1,7 @@
 package com.example.codeup.springblog;
 
+import com.example.codeup.springblog.model.User;
+
 import javax.persistence.*;
 
 
@@ -17,6 +19,10 @@ public class Post {
     @Column(nullable = false, columnDefinition = "Text")
     private String body;
 
+    @ManyToOne
+    @JoinColumn (name = "user_id") //to specify the foreign key
+    private User user;
+
     public Post() {
 
     }
@@ -24,6 +30,10 @@ public class Post {
     public Post(String title, String body) {
         this.title = title;
         this.body = body;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public long getId() {
@@ -50,9 +60,16 @@ public class Post {
         this.body = body;
     }
 
+
+
     public Post(long id, String title, String body) {
         this.id = id;
         this.title = title;
         this.body = body;
+    }
+
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

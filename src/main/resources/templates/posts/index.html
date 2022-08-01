@@ -6,8 +6,12 @@
 <h1>These are all the Posts</h1>
 <main>
     <article th:each="post : ${posts}">
-        <h3 th:text="${post.title}"></h3>
-        <p th:text="${post.body}"></p>
+<!--        <h3 th:text="${post.title}"></h3>-->
+<!--        <p th:text="${post.body}"></p>-->
+        <a th:href="@{/posts/{id}(id=${post.id})}">
+            <h3 th:text="${post.title}"></h3>
+            <p th:text="${post.body}"></p>
+        </a>
     </article>
 </main>
 </body>
