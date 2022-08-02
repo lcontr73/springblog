@@ -1,5 +1,6 @@
-package com.example.codeup.springblog;
+package com.example.codeup.springblog.controller;
 
+import com.example.codeup.springblog.model.Post;
 import com.example.codeup.springblog.model.User;
 import com.example.codeup.springblog.repositories.PostRepository;
 import com.example.codeup.springblog.repositories.UserRepository;
