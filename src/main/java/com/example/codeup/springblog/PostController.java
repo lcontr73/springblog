@@ -7,8 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
 
 @Controller
@@ -52,7 +51,8 @@ public class PostController {
     }
 
     @GetMapping(path = "/posts/create")
-    public String create() {
+    public String create(Model vModel) {
+        vModel.addAttribute("post", new Post());
         return "posts/create";
     }
 
@@ -65,11 +65,34 @@ public class PostController {
 //    }
 
     @PostMapping(path = "/posts/create")
-    public String savePost(@RequestParam String title, @RequestParam String body) {
+//    public String savePost(@RequestParam String title, @RequestParam String body) {
+    public String savePost(@ModelAttribute Post post) {
         User user = userDao.findById(2L).get();
-        Post post = new Post(title, body);
-        post.setUser(user); // if you don't have a constructor that also takes in the associated user
+//        Post post = new Post(title, body);
+        post.setUser(user);
         postDao.save(post);
         return "redirect:/posts";
     }
+
+
+    @GetMapping(path = "/posts/{id}/edit")
+    public String edit(@PathVariable long id, Model vModel) {
+//        vModel.addAttribute("post", new Post());
+//        return "posts/create";
+        Post post = postDao.findById(id).get();
+        vModel.addAttribute("post", post);
+        return "posts/edit";
+    }
+
+    @PostMapping(path = "/posts/{id}/edit")
+//    public String savePost(@RequestParam String title, @RequestParam String body) {
+    public String saveEdit(@ModelAttribute Post post) {
+        User user = userDao.findById(2L).get();
+//        Post post = new Post(title, body);
+        post.setUser(user);
+        postDao.save(post);
+        return "redirect:/posts";
+    }
+
+
 }

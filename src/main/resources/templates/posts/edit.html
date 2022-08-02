@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials/partials.html :: head('Create a Post')"></head>
+<head th:replace="partials/partials.html :: head('Edit a Post')"></head>
 <body>
 <nav th:replace="partials/partials.html :: nav"></nav>
-<!--<article th:each="post : ${posts}">-->
-<!--    <h3 th:text="${post.title}"></h3>-->
-<!--    <p th:text="${post.body}"></p>-->
-<!--</article>-->
+
 <div>
-    <h1>Create A Post</h1>
-    <form th:action="@{/posts/create}" th:method="POST" th:object="${post}">
+    <h1>Edit A Post</h1>
+    <form th:action="@{/posts/{id}/edit(id=${post.id})}" th:method="Post" th:object="${post}">
         <div>
             <label for="title">Title</label>
             <input th:field="*{title}" type="text" name="title" id="title" placeholder="Please enter a title">
