@@ -3,22 +3,18 @@
 <head th:replace="partials/partials.html :: head('Create a Post')"></head>
 <body>
 <nav th:replace="partials/partials.html :: nav"></nav>
-<!--<article th:each="post : ${posts}">-->
-<!--    <h3 th:text="${post.title}"></h3>-->
-<!--    <p th:text="${post.body}"></p>-->
-<!--</article>-->
 <div>
     <h1>Create A Post</h1>
     <form th:action="@{/posts/create}" th:method="POST" th:object="${post}">
-        <div>
-            <label for="title">Title</label>
-            <input th:field="*{title}" type="text" name="title" id="title" placeholder="Please enter a title">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input th:field="*{title}" type="text" name="title" id="title" placeholder="Please enter a title" class="form-control">
         </div>
-        <div>
-            <label for="body">Body</label>
-            <textarea th:field="*{body}" name="body" id="body" placeholder="Type your post"></textarea>
+        <div class="mb-3">
+            <label for="body" class="form-label">Body</label>
+            <textarea th:field="*{body}" name="body" id="body" placeholder="Type your post" class="form-control"></textarea>
         </div>
-        <button>Submit</button>
+        <button>Create Post</button>
     </form>
 </div>
 </body>
