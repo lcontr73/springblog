@@ -25,7 +25,7 @@ public class ProductController {
         List<Product> productList = productDao.findAll();
         // pass products to view
         vModel.addAttribute("products", productList);
-        return "/index";
+        return "/products/index";
     }
 
     // create a record with JPA
@@ -33,7 +33,7 @@ public class ProductController {
     public String createProducts() {
         Product product = new Product ("Pug", 20000);
         productDao.save(product);
-        return "redirect:/products";
+        return "redirect:/products/index";
     }
 
     // delete a record with JPA

@@ -4,6 +4,8 @@ import com.example.codeup.springblog.model.Post;
 import com.example.codeup.springblog.model.User;
 import com.example.codeup.springblog.repositories.PostRepository;
 import com.example.codeup.springblog.repositories.UserRepository;
+import com.example.codeup.springblog.services.EmailService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +20,14 @@ public class PostController {
 
     private UserRepository userDao;
 
+    private final EmailService emailService;
+
 
     // Constructor
-    public PostController(PostRepository postDao, UserRepository userDao) {
+    public PostController(PostRepository postDao, UserRepository userDao, EmailService emailService) {
         this.postDao = postDao;
         this.userDao = userDao;
+        this.emailService = emailService;
     }
 
 
@@ -59,9 +64,10 @@ public class PostController {
 
     @PostMapping(path = "/posts/create")
     public String savePost(@ModelAttribute Post post) {
-        User user = userDao.findById(2L).get();
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(user);
         postDao.save(post);
+        emailService.prepareAndSend(post, "You created a new post");
         return "redirect:/posts";
     }
 
