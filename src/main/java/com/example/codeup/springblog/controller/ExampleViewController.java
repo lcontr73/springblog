@@ -26,12 +26,12 @@ public class ExampleViewController {
         return "/search-results";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/login-example")
     public String loginForm() {
-        return "/login";
+        return "/products/login";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/login-example")
     public String processLogin() {
         //authenticate user
         return "redirect:/";

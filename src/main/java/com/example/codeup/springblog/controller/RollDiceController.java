@@ -14,7 +14,7 @@ public class RollDiceController {
 
     @GetMapping("/roll-dice")
     public String pickANumber() {
-        return "roll-dice";
+        return "class-exercises/roll-dice";
     }
 
     @GetMapping("/roll-dice/{number}")
@@ -23,7 +23,7 @@ public class RollDiceController {
         int roll = (int)Math.floor(Math.random()*(6-1+1)) +1;
         vModel.addAttribute("roll", roll);
         vModel.addAttribute("number", number);
-        return "roll-dice-n";
+        return "class-exercises/roll-dice-n";
 
     }
 }
