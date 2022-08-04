@@ -81,9 +81,15 @@ public class PostController {
 
     @PostMapping(path = "/posts/{id}/edit")
     public String saveEdit(@ModelAttribute Post post) {
-        User user = userDao.findById(2L).get();
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();;
         post.setUser(user);
         postDao.save(post);
+        return "redirect:/posts";
+    }
+
+    @PostMapping(path = "/posts/{id}/delete")
+    public String deletePost(@PathVariable long id ) {
+        postDao.deleteById(id);
         return "redirect:/posts";
     }
 
