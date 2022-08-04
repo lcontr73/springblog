@@ -3,9 +3,21 @@ body{
 }
 
 nav {
-    background: #C0D59E;
+    background: royalblue;
 }
 
 span {
     font-weight: bolder;
+}
+
+h1 {
+    color: forestgreen;
+    text-align: center;
+}
+
+h3 {
+    color: forestgreen;
+}
+body {
+    background: tan;
 }
